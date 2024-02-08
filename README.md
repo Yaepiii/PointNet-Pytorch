@@ -1,4 +1,4 @@
-# PointNet.pytorch
+# PointNet-Pytorch
 This repo is implementation for PointNet(https://arxiv.org/abs/1612.00593) in pytorch. The model is in `pointnet/model.py`.
 
 It is tested with pytorch-1.0.
@@ -6,8 +6,8 @@ It is tested with pytorch-1.0.
 # Download data and running
 
 ```
-git clone https://github.com/fxia22/pointnet.pytorch
-cd pointnet.pytorch
+git clone https://github.com/Yaepiii/PointNet-Pytorch
+cd Pointnet-Pytorch
 pip install -e .
 ```
 
@@ -17,6 +17,9 @@ cd scripts
 bash build.sh #build C++ code for visualization
 bash download.sh #download dataset
 ```
+If you want to run this code in Windows, you can generate the code of visualization by compiling project 'Dll1' in VS2019. And manually move the generated.dll file to the 'utils' folder.
+
+Or if you are using in Windows11, you can directly use my 'render_balls_so.dll'
 
 Training 
 ```
@@ -26,6 +29,16 @@ python train_segmentation.py --dataset <dataset path> --nepoch=<number epochs>
 ```
 
 Use `--feature_transform` to use feature transform.
+
+Note the corresponding file path!
+
+Test
+```
+cd utils
+python show_cls.py --model cls/cls_model_x.pth
+python show_seg.py --model seg/seg_model_Chair_x.pth --dataset <dataset path> --class_choice Earphone
+```
+where, 'cls/cls_model_x.pth' or 'cls/cls_model_x.pth' is your trained model parameters, please change your own parameter.
 
 # Performance
 
